@@ -1,0 +1,12 @@
+package SceneServerMsg;
+
+message SceneServerMsg {
+	oneof Msg{
+		ForwardSceneMsg ForwardSceneMsg = 1;
+	}
+}
+
+message ForwardSceneMsg {
+	required uint32 serverID = 1;
+	required uint32 serverName = 2;
+};

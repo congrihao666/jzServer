@@ -1,0 +1,37 @@
+package ZoneServerMsg;
+
+message ZoneServerMsg {
+	oneof Msg{
+		ForWardZoneStartupMsg ForWardZoneStartupMsg = 1;
+	}
+}
+
+//向ZoneServer请求启动
+message ForWardZoneStartupMsg {
+	required uint32 servertype = 1;
+	required string pstrIP = 2;
+};
+
+//启动返回
+message BackWardStartUpMsg {
+	required uint32 serverID = 1;
+	required uint32 verifyRet = 2;
+};
+
+message ServerInfo {
+	required uint32 serverID = 1;
+	required uint32 serverType = 2;
+	required string extIP = 3;
+	required string serverName = 4;
+};
+
+//通知其他Server 到当前Server信息
+message BackWardToOtherRegServerInfo {
+	required ServerInfo serverInfo = 1;
+};
+
+//通知当前Server 其他Server信息
+message BackWardToServerRegOtherServers {
+	repeated ServerInfo serverList = 1;
+};
+
